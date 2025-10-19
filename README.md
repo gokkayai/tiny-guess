@@ -1,2 +1,2 @@
-# Bits of Uncertainty
-A tiny number guessing game
+# Tiny Guess
+*A tiny number guessing game with a discrete math twist*
