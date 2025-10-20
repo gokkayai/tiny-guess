@@ -1,10 +1,30 @@
-# Bits of Uncertainty: A tiny number guessing game with a discrete math twist
+import random 
+import math
 
-APP_NAME = "Bits of Uncertainty"
-DEFAULT_RANGE = (1, 100)
-DIFFICULTIES = {"easy": (1, 50), "normal": (1, 100), "hard": (1, 1000)}
-TIE_BREAK_RULE = "floor"  # midpoint rule: floor for even ranges
-HOT_WARM_THRESHOLDS = {"hot": 3, "warm": 10}  # distance based hints
+target = random.randrange(0, 777)
+attempts = 0
 
-def main():
-    pass  # entry point placeholder
+while True:
+    try:
+        num = int(input("Choose a number between 0–777: "))
+    except ValueError:
+        print("That’s not a number, try again!")
+        continue
+
+    if num < 0 or num > 777:
+        print("Oops! That number is not valid. Try again!")
+        continue
+
+    attempts += 1
+
+    if num == target:
+        print("Well done!")
+        optimal = math.ceil(math.log2(778))
+        print(f"You used {attempts} guesses. Binary search could have done it in {optimal}.")
+        break
+
+    elif num > target:
+        print("You have to guess smaller!")
+
+    else:
+        print("You have to guess bigger!")
